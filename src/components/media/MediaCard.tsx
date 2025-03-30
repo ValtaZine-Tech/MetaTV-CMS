@@ -27,7 +27,6 @@ interface MediaCardProps {
 }
 
 export function MediaCard({
-  id,
   title,
   artist,
   thumbnail,
