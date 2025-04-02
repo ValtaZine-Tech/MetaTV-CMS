@@ -1,9 +1,18 @@
-
-import React from 'react';
-import { Avatar, AvatarImage, AvatarFallback } from '../../components/ui/avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '../../components/ui/popover';
-import { Button } from '../../components/ui/button';
-import { LogOut, User, Settings } from 'lucide-react';
+import React from "react";
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "../../components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../components/ui/popover";
+import { Button } from "../../components/ui/button";
+import { LogOut, User, Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { UserSessionUtils } from "../../utils/UserSessionUtils";
 
 interface UserAvatarProps {
   src: string;
@@ -12,7 +21,20 @@ interface UserAvatarProps {
   role: string;
 }
 
-const UserAvatar: React.FC<UserAvatarProps> = ({ src, fallback, name, role }) => {
+const UserAvatar: React.FC<UserAvatarProps> = ({
+  src,
+  fallback,
+  name,
+  role,
+}) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user session and redirect to login
+    UserSessionUtils.clearLocalStorageAndLogout();
+    navigate("/");
+  };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -33,7 +55,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ src, fallback, name, role }) =>
               <p className="text-xs text-muted-foreground">{role}</p>
             </div>
           </div>
-          
+
           <div className="flex flex-col gap-1">
             <Button variant="ghost" size="sm" className="justify-start">
               <User className="mr-2 h-4 w-4" />
@@ -43,7 +65,12 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ src, fallback, name, role }) =>
               <Settings className="mr-2 h-4 w-4" />
               Settings
             </Button>
-            <Button variant="ghost" size="sm" className="justify-start text-destructive">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="justify-start text-destructive"
+              onClick={handleLogout}
+            >
               <LogOut className="mr-2 h-4 w-4" />
               Logout
             </Button>

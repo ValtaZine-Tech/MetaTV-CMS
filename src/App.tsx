@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Sidebar } from "./components/layout/Sidebar";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import Music from "./pages/Music";
 import UploadMusic from "./pages/UploadMusic";
 import Videos from "./pages/Videos";
@@ -24,24 +25,39 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="flex h-screen w-full">
-          <Sidebar />
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/music" element={<Music />} />
-              <Route path="/music/upload" element={<UploadMusic />} />
-              <Route path="/videos" element={<Videos />} />
-              <Route path="/videos/upload" element={<UploadVideo />} />
-              <Route path="/livestreams" element={<Livestreams />} />
-              <Route path="/livestreams/create" element={<CreateStream />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/users/add" element={<AddUser />} />
-              <Route path="/donations" element={<Donations />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-        </div>
+        
+          <Routes>
+            {/* Public route */}
+            <Route path="/" element={<Login />} />
+
+            {/* Protected routes */}
+            <Route
+              path="/dashboard/*"
+              element={
+                
+                  <div className="flex h-screen w-full">
+                    <Sidebar />
+                    <div className="flex-1 flex flex-col overflow-hidden">
+                      <Routes>
+                        <Route path="" element={<Index />} />
+                        <Route path="/music" element={<Music />} />
+                        <Route path="/music/upload" element={<UploadMusic />} />
+                        <Route path="/videos" element={<Videos />} />
+                        <Route path="/videos/upload" element={<UploadVideo />} />
+                        <Route path="/livestreams" element={<Livestreams />} />
+                        <Route path="/livestreams/create" element={<CreateStream />} />
+                        <Route path="/users" element={<Users />} />
+                        <Route path="/users/add" element={<AddUser />} />
+                        <Route path="/donations" element={<Donations />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </div>
+                  </div>
+                 
+              }
+            />
+          </Routes>
+        
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

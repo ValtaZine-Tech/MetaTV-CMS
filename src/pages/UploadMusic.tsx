@@ -78,7 +78,7 @@ const UploadMusic = () => {
       <main className="flex-1 p-6 space-y-6 overflow-y-auto">
         <div className="flex items-center gap-2 mb-6">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/music">
+            <Link to="/dashboard/music">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to Music
             </Link>

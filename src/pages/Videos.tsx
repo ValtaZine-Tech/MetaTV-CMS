@@ -93,7 +93,7 @@ const Videos = () => {
           </div>
 
           <Button className="w-full sm:w-auto" asChild>
-            <Link to="/videos/upload">
+            <Link to="/dashboard/videos/upload">
               <Plus className="h-4 w-4 mr-2" />
               Upload Video
             </Link>

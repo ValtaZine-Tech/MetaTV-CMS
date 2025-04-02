@@ -23,32 +23,32 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     label: 'Dashboard',
-    href: '/',
+    href: '/dashboard/',
     icon: <LayoutDashboard className="h-5 w-5" />,
   },
   {
     label: 'Music',
-    href: '/music',
+    href: '/dashboard/music',
     icon: <Music className="h-5 w-5" />,
   },
   {
     label: 'Videos',
-    href: '/videos',
+    href: '/dashboard/videos',
     icon: <Video className="h-5 w-5" />,
   },
   {
     label: 'Livestreams',
-    href: '/livestreams',
+    href: '/dashboard/livestreams',
     icon: <Radio className="h-5 w-5" />,
   },
   {
     label: 'Users',
-    href: '/users',
+    href: '/dashboard/users',
     icon: <Users className="h-5 w-5" />,
   },
   {
     label: 'Donations',
-    href: '/donations',
+    href: '/dashboard/donations',
     icon: <DollarSign className="h-5 w-5" />,
   },
 ];
@@ -56,6 +56,8 @@ const navItems: NavItem[] = [
 export function Sidebar() {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+
+  
 
   return (
     <div className={cn(

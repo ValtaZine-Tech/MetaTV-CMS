@@ -113,7 +113,7 @@ const Music = () => {
           </div>
 
           <Button className="w-full sm:w-auto" asChild>
-            <Link to="/music/upload">
+            <Link to="/dashboard/music/upload">
               <Plus className="h-4 w-4 mr-2" />
               Upload Music
             </Link>
